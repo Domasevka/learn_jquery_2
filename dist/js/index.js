@@ -1,26 +1,26 @@
 "use strict";
 $(document).ready( function(){	
 
-    $("#add").click(function(e) {
-        e.preventDefault();
-        alert("Form submitted");
-    });
-	
-	$(function() {
-		
-    $("#submitForm").validate();
 
-    $("#submitForm").submit(function(){                       
-        if ($("#submitForm").valid()){
-            $.post("/create/post/",
-                   {'data':$('#mytextarea').val()},
-                   function(data){
-                       console.log(data);
-                       alert(data);
-                   });
-        }
-        return false;
-    });
- })
+   $('input[value="Submit text"]').click(function() {
 
-});
+        var str = $('textarea:first').serialize();
+
+       $("<p/>").text(str).appendTo($('div.messages_list'));
+        $( "form" ).submit(function( event ) {
+            event.preventDefault();
+        });
+    });
+
+    /*function showValues(){
+
+        var str = $( 'form' ).serialize();
+         $( 'div.messages_list' ).text( str );
+    }
+
+        $( "textarea[name='comment']" ).on( "click", showValues );
+        //$( 'input[value="Submit text"]' ).on( "click", showValues );
+        $( "textarea" ).on( "change", showValues );
+    showValues();*/
+
+})

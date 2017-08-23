@@ -11,16 +11,17 @@
   <body>
   
     <div class="container">
-		<form id="submitForm">
+		<form action="">
 		  <div class="form-group">
-			<label>Text</label>
-			<textarea id="mytextarea" rows="10" class="form-control" name="text" placeholder="text"></textarea>
+          <label>Text</label>
+          <textarea id="text" rows="10" class="form-control" name="comment" placeholder="text"></textarea>
+          <textarea rows="8" class="form-control" name="comment_2" placeholder="text"></textarea>
 		  </div>
-		  <input type="submit" class="btn btn-default" value="Submit text">	  
-		  <input type="submit" id="add" class="btn btn-default" value="Submit">
-		  <button class="btn">Messages <span class="badge badge-secondary">4</span></button>
-		</form>
-	<div>
+          <p><input type="submit" name="submit_text" class="btn btn-default" value="Submit text"></p>
+    </form>
+		  <button class="btn" name="messages">Messages <span class="badge badge-secondary">4</span></button>
+      <div class="messages_list"></div>
+	</div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
