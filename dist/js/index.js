@@ -8,8 +8,6 @@ $(document).ready(function () {
         //creates a date
         var dateNow = new Date();
         var localdate = (dateNow.getMonth() + 1) + '/' + dateNow.getDate() + '/' + dateNow.getFullYear() + ' ' + dateNow.getHours() + ':' + dateNow.getMinutes();
-        //putting a date in span
-        $('span.messages-list__date').text(localdate);
         //taking a date from json file
         jQuery.getJSON("index.json", function (data) {
             //assign a string from json to a variable
@@ -29,39 +27,7 @@ $(document).ready(function () {
         $('#auth').each(function () {
             this.reset();
         });
-
     });
 });
 
-/*var message = $("<p/>")
- .addClass('alert alert-primary')
- .text(str);
- .appendTo($('div.messages-list'));
 
- var now = $("<span/>")
- .addClass('messages-list__date')
- .appendTo($('p.alert alert-primary'));*/
-
-/*$(function() {
-
- $.getJSON( "ajax/test.json", function( data ) {
- console.log(data);
-
-
- if (data && data.title && data.answers) {
- var title  = $('<h4>').html(data.title).addClass('question-block__name');
- $('.question-block').append(title);
-
- var items = [];
- $.each( data.answers, function( key, val ) {
- items.push( "<li class='ellipse__item'>" + val + "</li>" );
- });
-
- $( "<ul/>", {
- "class": "ellipse",
- html: items.join( "" )
- }).appendTo( ".question-block" );
- }
- });
-
- });*/
