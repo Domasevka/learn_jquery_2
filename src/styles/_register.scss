@@ -1,0 +1,318 @@
+.app {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.column__center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.register {
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  background-color: $color-secondary;
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  margin-top: 23px;
+
+  &_bg {
+    width: 460px;
+  }
+
+  &__wrap {
+    padding: 25px 30px;
+  }
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    position: relative;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: $gray--darken;
+    text-transform: uppercase;
+
+    & > .register__text {
+      margin-bottom: 10px;
+    }
+
+    &:before {
+      position: absolute;
+      content: '';
+      border-left: 2px solid $color-primary;
+      left: -30px;
+      width: 2px;
+      height: 28px;
+    }
+
+    /*&_bg {
+      text-transform: uppercase;
+    }*/
+  }
+
+  &__row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    &_secondary {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__row:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  &__form-wrap {
+    margin-bottom: 40px;
+  }
+
+  &__icon {
+    border: 1px;
+  }
+
+  &__text {
+    color: $gray--light;
+    line-height: 1.8;
+    width: 100%;
+  }
+
+  &__photo {
+    display: block;
+    overflow: hidden;
+    width: calc(100% - 35%);
+    margin-left: auto;
+    margin-top: -40px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__reset-link {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    color: $color-warning;
+    font-size: 12px;
+    margin-bottom: 40px;
+
+    &:hover {
+      color: $color-warning-h;
+    }
+  }
+
+  &__new-link {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    color: $gray;
+    padding-top: 15px;
+
+    &:hover {
+      text-decoration-line: underline;
+    }
+  }
+}
+
+.register__field {
+  position: relative;
+  width: calc(100% - 35%);
+
+  label {
+    font-size: 12px;
+    color: $gray;
+  }
+  &:first-child {
+    width: 35%;
+  }
+}
+
+.register__input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 12px;
+  line-height: 14px;
+  color: $gray--darken;
+  font-weight: 500;
+  background-color: $color-secondary;
+  border: 2px solid $gray--lightest;
+  border-radius: 4px 4px 4px 4px;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  padding: 0 20px;
+
+ &_primary {
+    padding:0 20px 0 49px;
+  }
+}
+
+.register__icon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  top: 0;
+  width: 49px;
+  height: 40px;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.register__nav {
+  color: $gray;
+  margin-bottom: 40px;
+}
+
+.register__item {
+  font-size: 12px;
+  line-height: 20px;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+.register__container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+ //margin: 0 10px 0 0;
+  padding-left: 35px;
+
+  strong {
+    color: $color-primary;
+  }
+}
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  width: 20px;
+}
+
+.register__checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 4px;
+  border: 2px solid $gray--lighten;
+  background-color: transparent;
+}
+
+.register__container:hover input ~ .register__checkmark {
+  background-color: $gray--lighten;
+  //border-color: $gray--lighten;
+}
+
+.register__container input:checked  ~ .register__checkmark {
+  background-color: $color-primary;
+  border-color: $color-primary;
+}
+
+.register__checkmark {
+  &:before {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+}
+
+.register__container input:checked ~ .register__checkmark:before {
+  display: block;
+}
+
+.register__container .register__checkmark:before {
+  top: 1px;
+  left: 6px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(40deg);
+}
+
+.button {
+
+  &:not(:last-child) {
+    margin-right: 17px;
+  }
+}
+
+.register__btn {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  &-arrow {
+    border: solid $gray--light;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+  }
+
+  &:hover &-arrow {
+    border-color: $gray;
+  }
+}
+
+.register__valid {
+  position: absolute;
+  display: none;
+  align-items: center;
+  top: 0;
+  right: 20px;
+  width: 12px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  &.icon {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.valid_active {
+  display:flex;
+}
+
+
+
+
+
+.form-control_reg {
+  border-radius: 5px;
+  border: 2px solid #f5f5f5;
+  padding: 0 20px;
+  width: 100%;
+  color: $gray--darken;
+  height: 40px;
+}

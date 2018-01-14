@@ -1,33 +1,27 @@
-"use strict";
+'use strict';
 
-$(document).ready(function () {
-    //by click on input starting a function
-    $('input[value="Submit text"]').click(function () {
-        //creates a text string in standard URL-encoded notation only from textarea
-        var newText = $('textarea.form-control').serialize();
-        //creates a date
-        var dateNow = new Date();
-        var localdate = (dateNow.getMonth() + 1) + '/' + dateNow.getDate() + '/' + dateNow.getFullYear() + ' ' + dateNow.getHours() + ':' + dateNow.getMinutes();
-        //taking a date from json file
-        jQuery.getJSON("index.json", function (data) {
-            //assign a string from json to a variable
-            var newDate = data.kakoetoslovo;
-            //change a text from .json on text from form
-            var changeNewMessage = newDate.replace("__MESSAGE__", newText);
-            //change a date from .json on date from localdate
-            var changeNewDate = changeNewMessage.replace("__DATE__", localdate);
-            //put a new string in div from DOM
-            $('div.messages-list').append(changeNewDate);
-        });
-        //part of .serialize(); property
-        $("form").submit(function (event) {
-            event.preventDefault();
-        });
-        //clean text in form after sending
-        $('#auth').each(function () {
-            this.reset();
-        });
-    });
-});
+//form validation
+//form and enter fields
+var formElement = document.forms['searchform'];
 
+var guests = formElement['searchform-guests-number'];
+var rooms = formElement['searchform-guests-rooms'];
 
+guests.min = 1;
+guests.max = 6;
+
+var MAX_GUESTS_PER_ROOM = 3;
+
+function setMinAndMaxRooms(roomsElement, guestsNumber) {
+    roomsElement.min = Math.ceil(guestsNumber / MAX_GUESTS_PER_ROOM);
+    roomsElement.max = guestsNumber;
+}
+
+guests.value = 2;
+setMinAndMaxRooms(rooms, guests.value);
+rooms.value = rooms.min;
+
+guests.onchange = function(){
+    setMinAndMaxRooms(rooms, guests.value)
+}
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyIndXNlIHN0cmljdCc7XHJcblxyXG4vL2Zvcm0gdmFsaWRhdGlvblxyXG4vL2Zvcm0gYW5kIGVudGVyIGZpZWxkc1xyXG52YXIgZm9ybUVsZW1lbnQgPSBkb2N1bWVudC5mb3Jtc1snc2VhcmNoZm9ybSddO1xyXG5cclxudmFyIGd1ZXN0cyA9IGZvcm1FbGVtZW50WydzZWFyY2hmb3JtLWd1ZXN0cy1udW1iZXInXTtcclxudmFyIHJvb21zID0gZm9ybUVsZW1lbnRbJ3NlYXJjaGZvcm0tZ3Vlc3RzLXJvb21zJ107XHJcblxyXG5ndWVzdHMubWluID0gMTtcclxuZ3Vlc3RzLm1heCA9IDY7XHJcblxyXG52YXIgTUFYX0dVRVNUU19QRVJfUk9PTSA9IDM7XHJcblxyXG5mdW5jdGlvbiBzZXRNaW5BbmRNYXhSb29tcyhyb29tc0VsZW1lbnQsIGd1ZXN0c051bWJlcikge1xyXG4gICAgcm9vbXNFbGVtZW50Lm1pbiA9IE1hdGguY2VpbChndWVzdHNOdW1iZXIgLyBNQVhfR1VFU1RTX1BFUl9ST09NKTtcclxuICAgIHJvb21zRWxlbWVudC5tYXggPSBndWVzdHNOdW1iZXI7XHJcbn1cclxuXHJcbmd1ZXN0cy52YWx1ZSA9IDI7XHJcbnNldE1pbkFuZE1heFJvb21zKHJvb21zLCBndWVzdHMudmFsdWUpO1xyXG5yb29tcy52YWx1ZSA9IHJvb21zLm1pbjtcclxuXHJcbmd1ZXN0cy5vbmNoYW5nZSA9IGZ1bmN0aW9uKCl7XHJcbiAgICBzZXRNaW5BbmRNYXhSb29tcyhyb29tcywgZ3Vlc3RzLnZhbHVlKVxyXG59Il19

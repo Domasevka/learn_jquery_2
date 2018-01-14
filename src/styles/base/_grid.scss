@@ -1,0 +1,15 @@
+.container {
+  max-width: $site-width;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  //padding-right: $gutter;
+  //padding-left: $gutter;
+}
+
+.row_flex {
+  display: flex;
+  flex-wrap: wrap;
+  //margin-right: -15px;
+  //margin-left: -15px;
+}
