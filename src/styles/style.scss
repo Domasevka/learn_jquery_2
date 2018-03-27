@@ -1,5 +1,5 @@
 //@import "../../tmp/styles/sprite";
-@import "components/variables";
+@import "helpers/_variables";
 @import "components/buttons";
 @import "components/icons";
 @import "components/loader";
@@ -8,5 +8,6 @@
 @import "base/grid";
 @import "blocks/header";
 @import "register";
+@import "hotel-list";
 
 

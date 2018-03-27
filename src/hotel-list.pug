@@ -1,0 +1,15 @@
+include pug/helpers/_mixins
+
++base-page
+  include pug/_hotel-list.pug
+  template#hotel-template(style='display = none')
+    article.hotel
+      span.hotel-stars
+      h3.hotel-name
+      .hotel-distance
+        span
+      span.hotel-rating
+      span.hotel-favourite
+      ul.hotel-amenities
+      a(href='#').hotel-price
+        span

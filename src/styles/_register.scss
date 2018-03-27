@@ -1,11 +1,3 @@
-.app {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.15);
-}
-
 .column__center {
   display: flex;
   flex-direction: column;
@@ -161,6 +153,14 @@
  &_primary {
     padding:0 20px 0 49px;
   }
+
+  &:invalid {
+    border-color: $color-danger;
+  }
+
+  &:focus {
+    border-color: $gray--light;
+  }
 }
 
 .register__icon {
@@ -303,9 +303,6 @@
 .valid_active {
   display:flex;
 }
-
-
-
 
 
 .form-control_reg {

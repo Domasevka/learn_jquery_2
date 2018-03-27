@@ -21,6 +21,7 @@ guests.value = 2;
 setMinAndMaxRooms(rooms, guests.value);
 rooms.value = rooms.min;
 
+//when changing the number of guests
 guests.onchange = function(){
     setMinAndMaxRooms(rooms, guests.value)
 }

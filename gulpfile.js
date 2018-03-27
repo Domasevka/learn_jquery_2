@@ -29,13 +29,13 @@ var svgSprite = require('gulp-svg-sprite'),
     replace = require('gulp-replace');
 
 var srcDir = 'src/';
-var outputDir = 'dist/';
+var outputDir = 'build/';
 
 //const isDevelopment = !process.env.NODE_ENV || !process.env.NODE_ENV == 'development';
 
 // for build folder
 gulp.task('cleanOutputDir', function () {
-    return del('dist');
+    return del('build');
 });
 
 gulp.task('sass', function () {
@@ -75,10 +75,11 @@ gulp.task('pug', function(){
 });
 
 gulp.task('jsSync', function () {
-    return gulp.src(srcDir + 'js/*.js')
+    //return gulp.src(srcDir + 'js/*.js')
+    return gulp.src(srcDir + 'js/**/*.*')
         .pipe(sourcemaps.init())
         .pipe(plumber())
-        .pipe(concat('index.js', {newLine: ';'}))
+        //.pipe(concat('index.js', {newLine: ';'}))
         //.pipe(uglify())
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(outputDir + 'js/'));
@@ -100,18 +101,18 @@ gulp.task('fontsSync', function () {
         .pipe(gulp.dest(outputDir + 'fonts/'));
 });
 
-/*gulp.task('bower', function() {
-    //return gulp.src(mainBowerFiles('**!/!*.js' ,{debugging:true}))
+gulp.task('bower', function() {
+    //return gulp.src(mainBowerFiles('**/*.js' ,{debugging:true}))
     return gulp.src([
-        'bower_components/jquery/dist/jquery.js',
-        'bower_components/jquery-ui-slider/jquery-ui.js',
-        'bower_components/twbs-pagination/jquery.twbsPagination.js',
-        'bower_components/swiper/dist/js/swiper.min.js'
+        'bower_components/js-cookie/src/js.cookie.js'
+        //'bower_components/jquery-ui-slider/jquery-ui.js',
+        //'bower_components/twbs-pagination/jquery.twbsPagination.js',
+        //'bower_components/swiper/build/js/swiper.min.js'
     ])
         .pipe(concat("vendor.js"))
         .pipe(uglify()) // Сжимаем JS файл
         .pipe(gulp.dest(outputDir + 'js/')); // Выгружаем в папку
-});*/
+});
 
 gulp.task('svgSpriteBuild', function (){
     return gulp.src(srcDir + 'i/icons/*.svg')
@@ -121,7 +122,7 @@ gulp.task('svgSpriteBuild', function (){
                 pretty: true
             }
         }))
-        // remove all fill, style and stroke declarations in out shapes
+        // remove vendor fill, style and stroke declarations in out shapes
         .pipe(cheerio({
             run: function ($) {
                 $('[fill]').removeAttr('fill');
@@ -148,12 +149,12 @@ gulp.task('svgSpriteBuild', function (){
                 }
             }
         }))
-        .pipe(gulpIf('*.scss', gulp.dest('tmp/styles'), gulp.dest('dist/img')));
+        .pipe(gulpIf('*.scss', gulp.dest('tmp/styles'), gulp.dest('build/img')));
 });
 
 gulp.task('build', gulp.series(
     'cleanOutputDir',
-    gulp.parallel('pug', /*'bower',*/ 'jsSync', 'imageSync', 'fontsSync', 'svgSpriteBuild', 'sass'))
+    gulp.parallel('pug', 'bower', 'jsSync', 'imageSync', 'fontsSync', 'svgSpriteBuild', 'sass'))
 );
 
 gulp.task('watch', function(){
@@ -168,11 +169,11 @@ gulp.task('watch', function(){
 gulp.task('serve', function() {
     browserSync.init({
         server: {
-            baseDir: 'dist/',
+            baseDir: 'build/',
             index: "home.html"
         }
     });
-    browserSync.watch('dist/**/*.*').on('change', browserSync.reload);
+    browserSync.watch('build/**/*.*').on('change', browserSync.reload);
 });
 
 gulp.task('dev',
