@@ -18,3 +18,20 @@ function getElementFromTemplate(data) {
     element.querySelector('.hotel-price').textContent = data.price;
     return element;
 }
+
+
+function getHotels() {
+    //новый объект создается с помощью конструктора
+    var xhr = new XMLHttpRequest();
+    //после создания - указать параметры запроса
+    //с помощью метода open
+    xhr.open('GET', '/src/data/hotels.json');
+    //таймаут задается св-ом timeout до отправки
+    xhr.timeout = 10000;
+    xhr.onload = function(evt) {
+        console.log(evt);
+    };
+    xhr.send();
+}
+getHotels();
+
