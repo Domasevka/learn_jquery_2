@@ -85,13 +85,18 @@ gulp.task('jsSync', function () {
         .pipe(gulp.dest(outputDir + 'js/'));
 });
 
+gulp.task('data', function () {
+    return gulp.src(srcDir + 'data/**/*.*')
+        .pipe(gulp.dest(outputDir + 'data/'));
+});
+
 gulp.task('imageSync', function () {
     return gulp.src(srcDir + 'img/**/*.*')
-        .pipe(imagemin({
+        /*.pipe(imagemin({
             progressive: true,
             svgPlugins: [{removeViewBox: false}],
             use: [pngquant()]
-        }))
+        }))*/
         .pipe(gulp.dest(outputDir + 'img/'));
 });
 
@@ -154,7 +159,7 @@ gulp.task('svgSpriteBuild', function (){
 
 gulp.task('build', gulp.series(
     'cleanOutputDir',
-    gulp.parallel('pug', 'bower', 'jsSync', 'imageSync', 'fontsSync', 'svgSpriteBuild', 'sass'))
+    gulp.parallel('pug', 'bower', 'jsSync', 'data', 'imageSync', 'fontsSync', 'svgSpriteBuild', 'sass'))
 );
 
 gulp.task('watch', function(){
@@ -170,7 +175,7 @@ gulp.task('serve', function() {
     browserSync.init({
         server: {
             baseDir: 'build/',
-            index: "home.html"
+            index: "hotel-list.html"
         }
     });
     browserSync.watch('build/**/*.*').on('change', browserSync.reload);

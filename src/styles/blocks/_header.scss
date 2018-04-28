@@ -77,43 +77,8 @@
   display: block;
 }
 
-.header__info {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 2.14;
-  text-align: right;
-  color: #999999;
-}
-
 .header__nav-item:hover,
 .header__nav-item_active {
-
-  .icon {
-    color: #1569d6;
-  }
-}
-
-.header__login-link {
-  position: relative;
-  padding: 33px 0 30px 30px;
-  font-size: 14px;
-  color: $gray--light;
-}
-
-.header__login-icon {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  transition: all .2s ease-in;
-}
-
-.header__login-link:hover,
-.header__login-link:active {
-
-  color: #1569d6;
 
   .icon {
     color: #1569d6;
