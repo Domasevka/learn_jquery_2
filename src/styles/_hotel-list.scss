@@ -1,5 +1,37 @@
+.filter__item {
+  transition: all .2s ease-in;
+  font: 400 1.2rem/1.875 Roboto;
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 0 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #9b9b9b;
+  border-radius: 4px;
+  background-color: #e0e0e0;
+
+  &:hover {
+    color: #fff;
+    background-color: #1569d6;
+    cursor: pointer;
+  }
+
+  &_selected {
+    color: #fff;
+    background-color: #1875f0;
+  }
+
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+}
+
 .hotels-list {
   padding-top: 70px;
+
+  &__wrap {
+    padding-top: 70px;
+  }
 }
 
 .hotel {

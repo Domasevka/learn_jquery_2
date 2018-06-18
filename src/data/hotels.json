@@ -11,7 +11,7 @@
     "price": 3200,
     "rating": 7.4,
     "stars": 3,
-    "preview": "img/image_preload.jpg"
+    "preview": "http://via.placeholder.com/350x300"
   },
   {
     "amenities": ["wifi"],
@@ -20,11 +20,11 @@
       "lat": 35.5971291676,
       "lng": 139.7117990255
     },
-    "name": "Tokyo Inn",
+    "name": "First in",
     "pictures": ["http://via.placeholder.com/350x300"],
     "price": 1700,
     "rating": 7.4,
     "stars": 3,
-    "preview": "img/image_preload.jpg"
+    "preview": "http://via.placeholder.com/350x300"
   }
 ]

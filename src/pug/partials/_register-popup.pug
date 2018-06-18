@@ -2,11 +2,14 @@ main.app
   .container
     .row_flex
       .register
-        .register__head
-          h1.register__title Find Your Hotel
-        form.register__form.searchform(method='get', id='searchform')
-          .register__row
-            .searchform-group
+        .register__wrap
+          .register__head
+            h1.register__title Registrierung
+            .button-group.button_left
+              button.button.button_white.button_md
+                | Login
+          form.register__form.searchform(method='get', id='searchform')
+            .register__row.searchform-group
               span.register__icon
                 +icon('email','gray_mod')
               input.register__input.register__input_primary(placeholder='Your email')
@@ -21,17 +24,16 @@ main.app
                   //| * mindestens eine Ziffer (0-9)<br>
                   //| * mindestens 8 Zeichen und maximal 128 Zeichen<br>
                   //| * am Anfang und am Ende darf kein Leerzeichen stehen<br>
-            .searchform-group
+            .register__row.searchform-group
               span.register__icon
                 +icon('lock','gray_mod')
               input.register__input.register__input_primary(placeholder='Password')
 
-            .searchform-group
-                span.register__icon
-                  +icon('lock','gray_mod')
-                input.register__input.register__input_primary(placeholder='Password confirmation')
-          .register__row
-            .searchform-group.searchform-guests
+            .register__row.searchform-group
+              span.register__icon
+                +icon('lock','gray_mod')
+              input.register__input.register__input_primary(placeholder='Password confirmation')
+            .register__row.searchform-group.searchform-guests
               label.searchform-label(for='searchform-guests-number')
               input.register__input.register__input_primary.searchform-field(type='number', id='searchform-guests-number')
 
@@ -44,7 +46,24 @@ main.app
                   | Login-Versuche eingeschränkt. Bitte versuchen sie es nochmal
                   | in [countdown from 60 to 0] Sekunden.
 
-          .button-group.button_center.searchform-submit
-            button.button.button_blue(type='submit')
-              | Register
+            ul.register__nav
+              li.register__item
+                label.register__container
+                  input(type='checkbox', checked="checked").register__input
+                  span.register__checkmark
+                  | I have read and agree with &nbsp<strong>the term & conditions</strong>
+              li.register__item
+                label.register__container
+                  input(type='checkbox').register__input
+                  span.register__checkmark
+                  | <strong> Data Privacy </strong>
+              li.register__item
+                label.register__container
+                  input(type='checkbox').register__input
+                  span.register__checkmark
+                  | Receive newsletters
+
+            .button-group.button_center.searchform-submit
+              button.button.button_blue.button_block(type='submit')
+                | Register
 

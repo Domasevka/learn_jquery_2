@@ -1,0 +1,23 @@
+$src-font-roboto: '../fonts/Roboto';
+
+@each $font-folder, $file-name, $font-weight, $font-style in
+                (RobotoThin, robotothin, 100, normal),
+                (RobotoThinItalic, robotothinitalic, 100, italic),
+                (RobotoLight, robotolight, 300, normal),
+                (RobotoLightItalic, robotolightitalic, 300, italic),
+                (RobotoRegular, robotoregular, 400, normal),
+                (RobotoRegularItalic, robotoregularitalic, 400, italic),
+                (RobotoMedium, robotomedium, 500, normal),
+                (RobotoMediumItalic, robotomediumitalic, 500, italic), {
+  @font-face {
+    font-family: Roboto;
+    font-weight: $font-weight;
+    font-style: $font-style;
+    src: url('#{$src-font-roboto}/#{$font-folder}/#{$file-name}.eot');
+    src:
+            url('#{$src-font-roboto}/#{$font-folder}/#{$file-name}.eot?#iefix') format('embedded-opentype'),
+            url('#{$src-font-roboto}/#{$font-folder}/#{$file-name}.woff') format('woff'),
+            url('#{$src-font-roboto}/#{$font-folder}/#{$file-name}.woff2') format('woff2'),
+            url('#{$src-font-roboto}/#{$font-folder}/#{$file-name}.ttf') format('truetype');
+  }
+}

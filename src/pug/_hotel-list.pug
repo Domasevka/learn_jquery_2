@@ -1,6 +1,12 @@
 section
   .hotels-list__wrap
     .container
+      .filter.filter-hotels
+        .filter__item.filter__item_selected#filter-all(role='button') All
+        .filter__item#filter-expensive(role='button') First expensive
+        .filter__item#filter-cheap(role='button') First cheap
+        .filter__item#filter-2stars(role='button') From 2 stars
+        .filter__item#filter-6rating(role='button') Rating not lower 6
       .hotels-list.row.row_flex
         //article.hotel
           span.hotel-stars
