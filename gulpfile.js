@@ -39,7 +39,7 @@ gulp.task('cleanOutputDir', function () {
 });
 
 gulp.task('sass', function () {
-    return gulp.src(srcDir + 'styles/style.scss')
+    return gulp.src(srcDir + 'styles/main.scss')
         .pipe(plumber({
             errorHandler: notify.onError(function(err){
                 return {
@@ -106,8 +106,8 @@ gulp.task('fontsSync', function () {
         .pipe(gulp.dest(outputDir + 'fonts/'));
 });
 
-gulp.task('bower', function() {
-    //return gulp.src(mainBowerFiles('**/*.js' ,{debugging:true}))
+/*gulp.task('bower', function() {
+    //return gulp.src(mainBowerFiles('**!/!*.js' ,{debugging:true}))
     return gulp.src([
         'bower_components/js-cookie/src/js.cookie.js'
         //'bower_components/jquery-ui-slider/jquery-ui.js',
@@ -117,7 +117,7 @@ gulp.task('bower', function() {
         .pipe(concat("vendor.js"))
         .pipe(uglify()) // Сжимаем JS файл
         .pipe(gulp.dest(outputDir + 'js/')); // Выгружаем в папку
-});
+});*/
 
 gulp.task('svgSpriteBuild', function (){
     return gulp.src(srcDir + 'i/icons/*.svg')
@@ -159,7 +159,7 @@ gulp.task('svgSpriteBuild', function (){
 
 gulp.task('build', gulp.series(
     'cleanOutputDir',
-    gulp.parallel('pug', 'bower', 'jsSync', 'data', 'imageSync', 'fontsSync', 'svgSpriteBuild', 'sass'))
+    gulp.parallel('pug', /*'bower', */'jsSync', 'data', 'imageSync', 'fontsSync', 'svgSpriteBuild', 'sass'))
 );
 
 gulp.task('watch', function(){

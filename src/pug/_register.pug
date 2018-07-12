@@ -1,50 +1,50 @@
-main.app
-  .container
-    .row_flex
-      .register
-        .register__head
-          h1.register__title Find Your Hotel
-        form.register__form.searchform(method='get', id='searchform')
-          .register__row
-            .searchform-group
-              span.register__icon
-                +icon('email','gray_mod')
-              input.register__input.register__input_primary(placeholder='Your email')
-              .register__valid.valid_active
-                .register__valid-icon
-                  +icon('invalid','warning_mod')
-              .register__popup.popup_active.popup_invalid
-                span.register__popup-text
-                  | Folgende Anforderungen muss Ihr Passwort erfüllen:<br>
-                  | * mindestens ein Großbuchstabe (A-Z)<br>
-                  //| * mindestens ein Kleinbuchstabe (a-z)<br>
-                  //| * mindestens eine Ziffer (0-9)<br>
-                  //| * mindestens 8 Zeichen und maximal 128 Zeichen<br>
-                  //| * am Anfang und am Ende darf kein Leerzeichen stehen<br>
-            .searchform-group
-              span.register__icon
-                +icon('lock','gray_mod')
-              input.register__input.register__input_primary(placeholder='Password')
-
-            .searchform-group
+section
+  .register
+      .container
+        .row_flex
+          .register__head
+            h1.register__title Find Your Hotel
+          form.register__form.searchform(method='get', id='searchform')
+            .register__row
+              .searchform-group
+                span.register__icon
+                  +icon('email','gray_mod')
+                input.register__input.register__input_primary(placeholder='Your email')
+                .register__valid.valid_active
+                  .register__valid-icon
+                    +icon('invalid','warning_mod')
+                .register__popup.popup_active.popup_invalid
+                  span.register__popup-text
+                    | Folgende Anforderungen muss Ihr Passwort erfüllen:<br>
+                    | * mindestens ein Großbuchstabe (A-Z)<br>
+                    //| * mindestens ein Kleinbuchstabe (a-z)<br>
+                    //| * mindestens eine Ziffer (0-9)<br>
+                    //| * mindestens 8 Zeichen und maximal 128 Zeichen<br>
+                    //| * am Anfang und am Ende darf kein Leerzeichen stehen<br>
+              .searchform-group
                 span.register__icon
                   +icon('lock','gray_mod')
-                input.register__input.register__input_primary(placeholder='Password confirmation')
-          .register__row
-            .searchform-group.searchform-guests
-              label.searchform-label(for='searchform-guests-number')
-              input.register__input.register__input_primary.searchform-field(type='number', id='searchform-guests-number')
+                input.register__input.register__input_primary(placeholder='Password')
 
-              label.searchform-label(for='searchform-guests-rooms')
-              input.register__input.register__input_primary.searchform-field(type='number', id='searchform-guests-rooms')
-              //.register__popup.popup_active.popup_attention
-                span.register__popup-text
-                  | Um zu verhindern, dass sich Unbefugte Zugang
-                  | zu Ihren Daten verschaffen, haben wir die Anzahl der
-                  | Login-Versuche eingeschränkt. Bitte versuchen sie es nochmal
-                  | in [countdown from 60 to 0] Sekunden.
+              .searchform-group
+                  span.register__icon
+                    +icon('lock','gray_mod')
+                  input.register__input.register__input_primary(placeholder='Password confirmation')
+            .register__row
+              .searchform-group.searchform-guests
+                label.searchform-label(for='searchform-guests-number')
+                input.register__input.register__input_primary.searchform-field(type='number', id='searchform-guests-number')
 
-          .button-group.button_center.searchform-submit
-            button.button.button_blue(type='submit')
-              | Register
+                label.searchform-label(for='searchform-guests-rooms')
+                input.register__input.register__input_primary.searchform-field(type='number', id='searchform-guests-rooms')
+                //.register__popup.popup_active.popup_attention
+                  span.register__popup-text
+                    | Um zu verhindern, dass sich Unbefugte Zugang
+                    | zu Ihren Daten verschaffen, haben wir die Anzahl der
+                    | Login-Versuche eingeschränkt. Bitte versuchen sie es nochmal
+                    | in [countdown from 60 to 0] Sekunden.
+
+            .button-group.button_center.searchform-submit
+              button.button.button_blue(type='submit')
+                | Register
 

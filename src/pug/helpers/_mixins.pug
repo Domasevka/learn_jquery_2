@@ -13,19 +13,6 @@ mixin base-page(page)
       //- скрипты
       include ../meta/_scripts
 
-mixin secondary-page(page)
-  doctype html
-  html(lang='en')
-    head
-      include ../meta/_head
-    body
-      if block
-        block
-      //-include ../_index
-      //- скрипты
-      include ../meta/_scripts
-
-
 
 //svg-icon
 mixin icon(name, mod)

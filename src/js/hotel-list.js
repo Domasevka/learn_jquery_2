@@ -86,7 +86,7 @@ function getElementFromTemplate(data) {
 }
 
 var amenityName = {
- 'breakfast' : 'завтрак',
+ 'breakfast': 'завтрак',
  'parking': 'парковка',
  'wifi': 'Wifi'
  };
@@ -116,13 +116,20 @@ var amenityName = {
   //предотвращение повторной уст-ки одного и того же фильтра.
     if (activeFilter === id) {
       return;
+
     }
 
     document.querySelector('#' + activeFilter).classList.remove('filter__item_selected');
     document.querySelector('#' + id).classList.add('filter__item_selected');
 
+    var filteredHotels = hotels.slice(0); //Копирование массива
+    switch (id){
+        case 'filter-expensive':
 
-
+            break;
+        case 'filter-2stars': break; //default
+    }
+    renderHotels(filteredHotels);
   }
 
  //загрузка списка отелей

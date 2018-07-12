@@ -1,4 +1,13 @@
-#map {
-    width: 100%;
-    height: 400px;
-}
+//@import "../../tmp/styles/sprite";
+@import "helpers/variables";
+@import "components/buttons";
+@import "components/fonts";
+@import "components/forms";
+@import "components/icons";
+@import "components/loader";
+@import "components/popover";
+@import "base/reset";
+@import "base/grid";
+@import "blocks/header";
+@import "register";
+@import "hotel-list";

@@ -9,8 +9,9 @@
   @include font(1.2rem, 400, 1.8);
 
   width: 100%;
-  background-color: $color-secondary;
-  margin-top: 23px;
+  background-color: $gray--lighten;
+  margin-bottom: 20px;
+  padding: 50px 0;
 
   &_bg {
     width: 460px;
@@ -20,6 +21,7 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    width: 100%;
     margin-bottom: 30px;
   }
 
