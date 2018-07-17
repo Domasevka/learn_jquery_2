@@ -1,15 +1,15 @@
 [
   {
-    "amenities": ["breakfast"],
+    "amenities": ["breakfast", "parking", "free wifi", "Restaurant"],
     "distance": 3.8,
     "location": {
       "lat": 35.5971291676,
       "lng": 139.7117990255
     },
-    "name": "Tokyo Inn",
+    "name": "Hampton by Hilton Warsaw City Centre",
     "pictures": ["http://via.placeholder.com/350x300"],
-    "price": 3200,
-    "rating": 7.4,
+    "price": 50,
+    "rating": 8.8,
     "stars": 3,
     "preview": "http://via.placeholder.com/350x300"
   },
@@ -20,11 +20,81 @@
       "lat": 35.5971291676,
       "lng": 139.7117990255
     },
-    "name": "First in",
+    "name": "Novotel Warszawa Centrum",
     "pictures": ["http://via.placeholder.com/350x300"],
-    "price": 1700,
-    "rating": 7.4,
-    "stars": 3,
+    "price": 60,
+    "rating": 8.5,
+    "stars": 4,
+    "preview": "http://via.placeholder.com/350x300"
+  },
+  {
+    "amenities": ["wifi"],
+    "distance": 4.8,
+    "location": {
+      "lat": 35.5971291676,
+      "lng": 139.7117990255
+    },
+    "name": "Hotel Polonia",
+    "pictures": ["http://via.placeholder.com/350x300"],
+    "price": 111,
+    "rating": 9.2,
+    "stars": 4,
+    "preview": "http://via.placeholder.com/350x300"
+  },
+  {
+    "amenities": ["wifi"],
+    "distance": 4.8,
+    "location": {
+      "lat": 35.5971291676,
+      "lng": 139.7117990255
+    },
+    "name": "Radisson Blu Centrum",
+    "pictures": ["http://via.placeholder.com/350x300"],
+    "price": 111,
+    "rating": 8.4,
+    "stars": 5,
+    "preview": "http://via.placeholder.com/350x300"
+  },
+  {
+    "amenities": ["wifi"],
+    "distance": 4.8,
+    "location": {
+      "lat": 35.5971291676,
+      "lng": 139.7117990255
+    },
+    "name": "Warsaw Marriott Hotel",
+    "pictures": ["http://via.placeholder.com/350x300"],
+    "price": 86,
+    "rating": 8.8,
+    "stars": 5,
+    "preview": "http://via.placeholder.com/350x300"
+  },
+  {
+    "amenities": ["wifi"],
+    "distance": 4.8,
+    "location": {
+      "lat": 35.5971291676,
+      "lng": 139.7117990255
+    },
+    "name": "InterContinental Warszawa",
+    "pictures": ["http://via.placeholder.com/350x300"],
+    "price": 73,
+    "rating": 9.2,
+    "stars": 5,
+    "preview": "http://via.placeholder.com/350x300"
+  },
+  {
+    "amenities": ["wifi"],
+    "distance": 4.8,
+    "location": {
+      "lat": 35.5971291676,
+      "lng": 139.7117990255
+    },
+    "name": "Holiday Inn - Warsaw City Centre",
+    "pictures": ["http://via.placeholder.com/350x300"],
+    "price": 57,
+    "rating": 9.0,
+    "stars": 4,
     "preview": "http://via.placeholder.com/350x300"
   }
 ]

@@ -88,7 +88,7 @@ function getElementFromTemplate(data) {
 var amenityName = {
  'breakfast': 'завтрак',
  'parking': 'парковка',
- 'wifi': 'Wifi'
+ 'wifi': 'WiFi'
  };
 
   var container = document.querySelector('.hotels-list');
@@ -96,15 +96,19 @@ var amenityName = {
   var hotels = [];
 
   var filters = document.querySelectorAll('.filter__item');
-  for (var i = 0; i <= filters.length; i++) {
+  for (var i = 0; i < filters.length; i++) {
       filters[i].onclick = function(evt) {
          var clickedElementID = evt.target.id;
          setActiveFilter(clickedElementID);
       };
   }
 
- function renderHotels(hotels) {
-     hotels.forEach(function(hotel){
+ getHotels();
+ // отрисовка списка отелей
+ function renderHotels(hotelsToRender) {
+     container.innerHTML='';
+
+     hotelsToRender.forEach(function(hotel){
          var element = getElementFromTemplate(hotel);
          container.appendChild(element);
      });
@@ -115,8 +119,7 @@ var amenityName = {
   function setActiveFilter(id) {
   //предотвращение повторной уст-ки одного и того же фильтра.
     if (activeFilter === id) {
-      return;
-
+        return;
     }
 
     document.querySelector('#' + activeFilter).classList.remove('filter__item_selected');
@@ -125,6 +128,9 @@ var amenityName = {
     var filteredHotels = hotels.slice(0); //Копирование массива
     switch (id){
         case 'filter-expensive':
+            filteredHotels = filteredHotels.sort(function (a, b) {
+                return b.price - a.price;
+            });
 
             break;
         case 'filter-2stars': break; //default
@@ -154,7 +160,7 @@ var amenityName = {
      };
 
      xhr.send();
- }getHotels();
+ }
 
 /*function getHotels() {
     var loadedData = null;
