@@ -96,6 +96,7 @@ var amenityName = {
   var hotels = [];
 
   var filters = document.querySelectorAll('.filter__item');
+  //for (var i = 0; len = filters.length; i < len;i < filters.length; i++) {
   for (var i = 0; i < filters.length; i++) {
       filters[i].onclick = function(evt) {
          var clickedElementID = evt.target.id;
@@ -104,14 +105,23 @@ var amenityName = {
   }
 
  getHotels();
- // отрисовка списка отелей
+
+ //отрисовка списка отелей
  function renderHotels(hotelsToRender) {
-     container.innerHTML='';
+     container.innerHTML = '';
+     var fragment = document.createDocumentFragment();
 
      hotelsToRender.forEach(function(hotel){
          var element = getElementFromTemplate(hotel);
-         container.appendChild(element);
+         //для каждого из 50 элементов вызывается отрисовка в DOM
+         //чтобы избежать пересчета параметров каждого элемента для вставки
+         //на страницу - пользуются фрагментами, нодами вида DocumentFragment,
+         //которые представляют собой контейнеры для других элементов.
+
+         fragment.appendChild(element);
      });
+
+     container.appendChild(fragment);
  }
 
   //уст-ка выбранного фильтра
@@ -126,8 +136,10 @@ var amenityName = {
     document.querySelector('#' + id).classList.add('filter__item_selected');
 
     var filteredHotels = hotels.slice(0); //Копирование массива
+
     switch (id){
         case 'filter-expensive':
+
             filteredHotels = filteredHotels.sort(function (a, b) {
                 return b.price - a.price;
             });
