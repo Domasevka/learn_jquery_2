@@ -94,9 +94,10 @@ var amenityName = {
   var container = document.querySelector('.hotels-list');
   var activeFilter = 'filter-all';
   var hotels = [];
+  //var currentPage = 0;ToDo
+ // var PAGE_SIZE = 9;ToDo
 
   var filters = document.querySelectorAll('.filter__item');
-  //for (var i = 0; len = filters.length; i < len;i < filters.length; i++) {
   for (var i = 0; i < filters.length; i++) {
       filters[i].onclick = function(evt) {
          var clickedElementID = evt.target.id;
@@ -107,39 +108,50 @@ var amenityName = {
  getHotels();
 
  //отрисовка списка отелей
+ //function renderHotels(hotelsToRender, pageNumber) {ToDo
  function renderHotels(hotelsToRender) {
      container.innerHTML = '';
-     var fragment = document.createDocumentFragment();
 
+     //var fragment = document.createDocumentFragment();ToDo
+     //var from = pageNumber * PAGE_SIZE;ToDo
+     //var to = from + PAGE_SIZE;ToDo
+     //var pageHotels = hotelsToRender.slice(from, to);ToDo
+
+     //hotelsToRender.forEach(function(hotel){ToDo
      hotelsToRender.forEach(function(hotel){
          var element = getElementFromTemplate(hotel);
+         container.appendChild(element);
          //для каждого из 50 элементов вызывается отрисовка в DOM
          //чтобы избежать пересчета параметров каждого элемента для вставки
          //на страницу - пользуются фрагментами, нодами вида DocumentFragment,
          //которые представляют собой контейнеры для других элементов.
 
-         fragment.appendChild(element);
+         //fragment.appendChild(element);ToDo
      });
 
-     container.appendChild(fragment);
+    //container.appendChild(fragment);ToDo
  }
 
   //уст-ка выбранного фильтра
   //@param {string} id
+  //@param {boolean=} force Флаг, при котором игнорируется
+  // проверка на повтрное присвоение фильтра
   function setActiveFilter(id) {
   //предотвращение повторной уст-ки одного и того же фильтра.
     if (activeFilter === id) {
         return;
     }
-
+    //подсветка выбранного фильтра
     document.querySelector('#' + activeFilter).classList.remove('filter__item_selected');
+    //document.querySelector('#filter-expensive').classList.add('filter__item_selected');
     document.querySelector('#' + id).classList.add('filter__item_selected');
 
     var filteredHotels = hotels.slice(0); //Копирование массива
-
+    //отсортировать  отфильтровать отели по выбранному параметру и вывест на страницу
     switch (id){
         case 'filter-expensive':
-
+            //для показа сначала дорогих отелей список нужно отсортировать
+            //по убыванию цены
             filteredHotels = filteredHotels.sort(function (a, b) {
                 return b.price - a.price;
             });
@@ -148,6 +160,8 @@ var amenityName = {
         case 'filter-2stars': break; //default
     }
     renderHotels(filteredHotels);
+    //renderHotels(filteredHotels, 0);ToDo
+    //activeFilter = id;ToDo
   }
 
  //загрузка списка отелей
@@ -166,6 +180,8 @@ var amenityName = {
      xhr.onload = function(evt) {
          var rawData = evt.target.response;
          var loadedHotels = JSON.parse(rawData);
+         hotels = loadedHotels;
+         //updateLoadedHotels(loadedHotels);
 
          //обработка загруженных данных(например отрисовка)
          renderHotels(loadedHotels);
