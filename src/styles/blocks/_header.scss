@@ -18,7 +18,12 @@
 }
 
 .header__logo {
-  margin-right: 50px;
+  width: 100px;
+  height: auto;
+
+  img {
+    width: 100%;
+  }
 }
 
 .header__nav {

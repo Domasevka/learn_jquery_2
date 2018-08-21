@@ -5,15 +5,16 @@ include pug/helpers/_mixins
   include pug/_hotel-list.pug
   template#hotel-template(style='display = none')
     article.hotel
-      span.hotel-stars
-      h3.hotel-name
-      .hotel-distance
-        span
-      span.hotel-rating
-      span.hotel-favourite
-      ul.hotel-amenities
-      a(href='#').hotel-price
-        span
+      .hotel-content
+        span.hotel-stars
+        h3.hotel-name
+        .hotel-distance
+          span
+        span.hotel-rating
+        span.hotel-favourite
+        ul.hotel-amenities
+        a(href='#').hotel-price
+          span
       .hotel-list__img
         //img(src="http://via.placeholder.com/350x150" alt="img")
         //-a(href='#').btn.btn_secondary.btn_sm

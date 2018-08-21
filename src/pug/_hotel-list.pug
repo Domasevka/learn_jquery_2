@@ -2,17 +2,17 @@ section
   .hotels-list__wrap
     .container
       .filter.filter-hotels
-        .filter__item.filter__item_selected(id='filter-all', role='button') All
-        .filter__item(id='filter-expensive', role='button') First expensive
-        .filter__item(id='filter-cheap', role='button') First cheap
-        .filter__item(id='filter-2stars', role='button') From 2 stars
-        .filter__item(id='filter-6rating', role='button') Rating not lower 6
+        button.button.button_blue.filter__item.filter__item_selected(id='filter-all', tabindex='0') All
+        button.button.button_blue.filter__item(id='filter-expensive', tabindex='0') First expensive
+        button.button.button_blue.filter__item(id='filter-cheap', tabindex='0') First cheap
+        button.button.button_blue.filter__item(id='filter-2stars', tabindex='0') From 2 stars
+        button.button.button_blue.filter__item(id='filter-6rating', tabindex='0') Rating not lower 6
       .hotels-list.row.row_flex
         //article.hotel
           span.hotel-stars
           h3.hotel-name
           .hotel-distance
-            span
+             span
           span.hotel-rating
           span.hotel-favourite
           ul.hotel-amenities

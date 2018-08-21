@@ -120,7 +120,7 @@ gulp.task('fontsSync', function () {
 });*/
 
 gulp.task('svgSpriteBuild', function (){
-    return gulp.src(srcDir + 'i/icons/*.svg')
+    return gulp.src(srcDir + 'i/**/*.svg')
     // minify svg
         .pipe(svgmin({
             js2svg: {
@@ -165,7 +165,7 @@ gulp.task('build', gulp.series(
 gulp.task('watch', function(){
     gulp.watch(srcDir + '**/*.pug', gulp.series('pug'));
     gulp.watch(srcDir +'styles/**/*.scss', gulp.series('sass'));
-    gulp.watch(srcDir +'i/**/*.svg', gulp.series('svgSpriteBuild'));
+    gulp.watch(srcDir +'i/*.svg', gulp.series('svgSpriteBuild'));
     gulp.watch(srcDir + 'js/*.js', gulp.series('jsSync'));
     gulp.watch(srcDir + 'img/**/*', gulp.series('imageSync'));
     gulp.watch(srcDir + 'fonts/**/*', gulp.series('fontsSync'));

@@ -55,6 +55,7 @@ function getElementFromTemplate(data) {
     } else {
         var element = template.children[0].cloneNode(true);
     }
+
     element.querySelector('.hotel-name').textContent = data.name;
     element.querySelector('.hotel-rating').textContent = data.rating;
     element.querySelector('.hotel-price').textContent = data.price;
@@ -111,8 +112,8 @@ var amenityName = {
  //function renderHotels(hotelsToRender, pageNumber) {ToDo
  function renderHotels(hotelsToRender) {
      container.innerHTML = '';
+     var fragment = document.createDocumentFragment();
 
-     //var fragment = document.createDocumentFragment();ToDo
      //var from = pageNumber * PAGE_SIZE;ToDo
      //var to = from + PAGE_SIZE;ToDo
      //var pageHotels = hotelsToRender.slice(from, to);ToDo
@@ -126,10 +127,10 @@ var amenityName = {
          //на страницу - пользуются фрагментами, нодами вида DocumentFragment,
          //которые представляют собой контейнеры для других элементов.
 
-         //fragment.appendChild(element);ToDo
+         fragment.appendChild(element);
      });
 
-    //container.appendChild(fragment);ToDo
+    container.appendChild(fragment);
  }
 
   //уст-ка выбранного фильтра
@@ -157,11 +158,35 @@ var amenityName = {
             });
 
             break;
-        case 'filter-2stars': break; //default
+
+        case 'filter-cheap':
+            filteredHotels = filteredHotels.sort(function (a, b) {
+                return a.price - b.price;
+            });
+
+            break;
+
+        case 'filter-2stars':
+            filteredHotels = filteredHotels.sort(function (a, b) {
+                return a.stars - b.stars;
+            }).filter(function(item) {
+                return item.stars > 2;
+            });
+
+            break;
+
+        case 'filter-6rating':
+            filteredHotels = filteredHotels.sort(function (a, b) {
+                return a.rating - b.rating;
+            }).filter(function(item) {
+                return item.rating >=6;
+            });
+
+            break; //default
     }
-    renderHotels(filteredHotels);
-    //renderHotels(filteredHotels, 0);ToDo
-    //activeFilter = id;ToDo
+    //renderHotels(filteredHotels);
+    renderHotels(filteredHotels, 0);
+    activeFilter = id;
   }
 
  //загрузка списка отелей

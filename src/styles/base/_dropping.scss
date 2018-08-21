@@ -125,10 +125,27 @@ button {
   outline: none;
 }
 
+//:focus {
+//  outline: none;
+//}
 :focus {
+  box-shadow: 0 0 0 3px #ffffff, 0 0 0 4px #2f7cc0;
   outline: none;
 }
 
 :invalid {
   outline: none;
 }
+
+//:root {
+//  background-color: #fefefe;
+//  filter: invert(100%);
+//}
+//
+//* {
+//  background-color: inherit;
+//}
+//
+//img:not([src*=".svg"]), video {
+//  filter: invert(100%);
+//}
