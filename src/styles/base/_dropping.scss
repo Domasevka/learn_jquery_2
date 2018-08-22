@@ -15,7 +15,8 @@ body {
   display: flex;
   flex-direction: column;
 
-  color: $color-secondary;
+  //color: $color-secondary;
+  color: $color-main;
 
   align-items: stretch;
   margin: 0;
@@ -125,9 +126,6 @@ button {
   outline: none;
 }
 
-//:focus {
-//  outline: none;
-//}
 :focus {
   box-shadow: 0 0 0 3px #ffffff, 0 0 0 4px #2f7cc0;
   outline: none;
@@ -136,6 +134,18 @@ button {
 :invalid {
   outline: none;
 }
+
+//use class to hide elements
+//.visuallyhidden {
+//  border: 0;
+//  clip: rect(0 0 0 0);
+//  height: 1px;
+//  margin: -1px;
+//  overflow: hidden;
+//  padding: 0;
+//  position: absolute;
+//  width: 1px;
+//}
 
 //:root {
 //  background-color: #fefefe;

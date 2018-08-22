@@ -95,8 +95,8 @@ var amenityName = {
   var container = document.querySelector('.hotels-list');
   var activeFilter = 'filter-all';
   var hotels = [];
-  //var currentPage = 0;ToDo
- // var PAGE_SIZE = 9;ToDo
+  var currentPage = 0;
+  var PAGE_SIZE = 9;
 
   var filters = document.querySelectorAll('.filter__item');
   for (var i = 0; i < filters.length; i++) {
@@ -105,23 +105,34 @@ var amenityName = {
          setActiveFilter(clickedElementID);
       };
   }
+  window.addEventListener('scroll', function(evt) {
+      //как определить, что скроллвнизу страницы и пора показать
+      //следующую порцию отелей?
+      //Проверить - виден ли футер страницы.
+      //как проверить виден ли футер страницы?
+      //1. определить положение футераотнос-но экрана(вьюпорта)
+      //2. определить высоту экрана
+      //3. если смещение футера минус высота экрана меньше высоты футера,
+      //    футер виден хотя бы частично
+  });
 
  getHotels();
 
  //отрисовка списка отелей
- //function renderHotels(hotelsToRender, pageNumber) {ToDo
- function renderHotels(hotelsToRender) {
+
+ //function renderHotels(hotelsToRender) {ToDo delete old
+function renderHotels(hotelsToRender, pageNumber) {
      container.innerHTML = '';
      var fragment = document.createDocumentFragment();
 
-     //var from = pageNumber * PAGE_SIZE;ToDo
-     //var to = from + PAGE_SIZE;ToDo
-     //var pageHotels = hotelsToRender.slice(from, to);ToDo
+     var from = pageNumber * PAGE_SIZE;
+     var to = from + PAGE_SIZE;
+     var pageHotels = hotelsToRender.slice(from, to);
 
-     //hotelsToRender.forEach(function(hotel){ToDo
-     hotelsToRender.forEach(function(hotel){
+     //hotelsToRender.forEach(function(hotel){ToDo delete old
+        pageHotels.forEach(function(hotel){
          var element = getElementFromTemplate(hotel);
-         container.appendChild(element);
+
          //для каждого из 50 элементов вызывается отрисовка в DOM
          //чтобы избежать пересчета параметров каждого элемента для вставки
          //на страницу - пользуются фрагментами, нодами вида DocumentFragment,
@@ -150,6 +161,7 @@ var amenityName = {
     var filteredHotels = hotels.slice(0); //Копирование массива
     //отсортировать  отфильтровать отели по выбранному параметру и вывест на страницу
     switch (id){
+
         case 'filter-expensive':
             //для показа сначала дорогих отелей список нужно отсортировать
             //по убыванию цены

@@ -9,7 +9,9 @@ section
               .searchform-group
                 span.register__icon
                   +icon('email','gray_mod')
-                input.register__input.register__input_primary(placeholder='Your email')
+                  //label.visuallyhidden(for='email') Enter your email
+                    input.register__input.register__input_primary(placeholder='Your email', type='text', name='email', id='email')
+                input.register__input.register__input_primary(placeholder='Your email', type='text', name='email', aria-label='Enter your email')
                 .register__valid.valid_active
                   .register__valid-icon
                     +icon('invalid','warning_mod')
@@ -24,7 +26,7 @@ section
               .searchform-group
                 span.register__icon
                   +icon('credit-card','gray_mod')
-                input.register__input.register__input_primary(placeholder='Password')
+                input.register__input.register__input_primary(placeholder='Password', type='text', name='password', aria-label='Enter your password')
 
               .searchform-group
                   span.register__icon
