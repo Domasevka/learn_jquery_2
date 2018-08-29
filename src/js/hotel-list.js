@@ -105,24 +105,43 @@ var amenityName = {
          setActiveFilter(clickedElementID);
       };
   }
+
+  var scrollTimeout;
+
   window.addEventListener('scroll', function(evt) {
-      //как определить, что скроллвнизу страницы и пора показать
-      //следующую порцию отелей?
-      //Проверить - виден ли футер страницы.
-      //как проверить виден ли футер страницы?
-      //1. определить положение футераотнос-но экрана(вьюпорта)
-      //2. определить высоту экрана
-      //3. если смещение футера минус высота экрана меньше высоты футера,
-      //    футер виден хотя бы частично
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(function () {
+          console.log('scroll');
+          //как определить, что скролл внизу страницы и пора показать
+          //следующую порцию отелей?
+          //Проверить - виден ли футер страницы.
+          //как проверить виден ли футер страницы?
+          //1. определить положение футераотнос-но экрана(вьюпорта)
+          var footerCoordinates = document.querySelector('footer').getBoundingClientRect();
+
+          //2. определить высоту экрана
+          var viewportSize = window.innerHeight;
+          //3. если смещение футера минус высота экрана меньше высоты футера,
+          //    футер виден хотя бы частично
+          if (footerCoordinates.bottom - window.innerHeight <= footerCoordinates.height){
+              if (currentPage < Math.ceil(filteredHotels.length / PAGE_SIZE)) {
+                  renderHotels(filteredHotels, ++currentPage);
+              }
+          }
+      }, 100)
   });
 
- getHotels();
+   getHotels();
 
- //отрисовка списка отелей
+   //отрисовка списка отелей
+   //@param{Array.<Object>} hotels
 
- //function renderHotels(hotelsToRender) {ToDo delete old
-function renderHotels(hotelsToRender, pageNumber) {
-     container.innerHTML = '';
+//function renderHotels(hotelsToRender) {ToDo delete old
+function renderHotels(hotelsToRender, pageNumber, replace) {
+    if (replace) {
+        container.innerHTML = '';
+    }
+
      var fragment = document.createDocumentFragment();
 
      var from = pageNumber * PAGE_SIZE;
@@ -148,17 +167,22 @@ function renderHotels(hotelsToRender, pageNumber) {
   //@param {string} id
   //@param {boolean=} force Флаг, при котором игнорируется
   // проверка на повтрное присвоение фильтра
-  function setActiveFilter(id) {
+  function setActiveFilter(id, force) {
   //предотвращение повторной уст-ки одного и того же фильтра.
-    if (activeFilter === id) {
+    if (activeFilter === id && !force) {
         return;
     }
-    //подсветка выбранного фильтра
-    document.querySelector('#' + activeFilter).classList.remove('filter__item_selected');
-    //document.querySelector('#filter-expensive').classList.add('filter__item_selected');
-    document.querySelector('#' + id).classList.add('filter__item_selected');
 
-    var filteredHotels = hotels.slice(0); //Копирование массива
+    //подсветка выбранного фильтра
+    var selectedElement = document.querySelector('#' + activeFilter);
+    if (selectedElement) {
+        selectedElement.classList.remove('filter__item_selected');
+    }
+      document.querySelector('#' + id).classList.add('filter__item_selected');
+    //document.querySelector('#' + activeFilter).classList.remove('filter__item_selected');ToDo delete old
+    //document.querySelector('#' + id).classList.add('filter__item_selected');ToDo delete old
+
+    filteredHotels = hotels.slice(0); //Копирование массива
     //отсортировать  отфильтровать отели по выбранному параметру и вывест на страницу
     switch (id){
 
@@ -168,7 +192,6 @@ function renderHotels(hotelsToRender, pageNumber) {
             filteredHotels = filteredHotels.sort(function (a, b) {
                 return b.price - a.price;
             });
-
             break;
 
         case 'filter-cheap':
@@ -197,7 +220,7 @@ function renderHotels(hotelsToRender, pageNumber) {
             break; //default
     }
     //renderHotels(filteredHotels);
-    renderHotels(filteredHotels, 0);
+    renderHotels(filteredHotels, 0, true);
     activeFilter = id;
   }
 

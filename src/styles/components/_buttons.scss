@@ -143,32 +143,3 @@
 .button-cancel:active {
   color: #808080;
 }
-
-.button-arrow {
-  $font-size-button: 1.5em;
-
-  position: relative;
-  text-transform: uppercase;
-  padding: 0 10px;
-  min-height: $font-size-button * 2;
-  text-align: center;
-  color: $gray;
-  background-color: transparent;
-  border: 2px solid $color-primary;
-  border-right: 0;
-  transition: background-color .2s ease-in;
-
-  &::before {
-    position: absolute;
-    content: '';
-    width: $font-size-button * 2;
-    height: $font-size-button * 2;
-    right: $font-size-button * -0.6;
-    top: 50%;
-    background-color: transparent;
-    border-top: 2px solid red;
-    border-right: 2px solid red;
-    transform: translateY(-50%) rotate(45deg);
-  }
-
-}

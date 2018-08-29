@@ -7,11 +7,14 @@ mixin base-page(page)
     body
       //include ../svg/svg
       include ../partials/_header
+    main
       if block
         block
       //-include ../_index
       //- скрипты
-      include ../meta/_scripts
+    include ../partials/_footer
+
+    include ../meta/_scripts
 
 
 //svg-icon

@@ -8,7 +8,8 @@ html {
 }
 
 body {
-  //font-family: $font;
+  height: 100%;
+  font-family: $font;
   font-size: 14px;
   line-height: 1;
 
@@ -133,6 +134,10 @@ button {
 
 :invalid {
   outline: none;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 //use class to hide elements

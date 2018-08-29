@@ -1,0 +1,12 @@
+footer {
+  flex: 0 0 auto;
+  min-height: 80px;
+  background-color: $color-primary-h;
+}
+
+.footer {
+  &__logo {
+    margin-top: 20px;
+    color: $color-secondary;
+  }
+}
