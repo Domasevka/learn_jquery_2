@@ -98,14 +98,22 @@ var amenityName = {
   var currentPage = 0;
   var PAGE_SIZE = 9;
 
-  var filters = document.querySelectorAll('.filter__item');
+//ToDo delete old
+ /* var filters = document.querySelectorAll('.filter__item');
   for (var i = 0; i < filters.length; i++) {
       filters[i].onclick = function(evt) {
          var clickedElementID = evt.target.id;
          setActiveFilter(clickedElementID);
       };
-  }
+  }*/
+var filters = document.querySelector('.filter-hotels');
+    filters.addEventListener('click', function(evt){
+        var clickedElement = evt.target;
+        if (clickedElement.classList.contains('filter__item')) {
+            setActiveFilter(clickedElement.id);
+        }
 
+    });
   var scrollTimeout;
 
   window.addEventListener('scroll', function(evt) {
