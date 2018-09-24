@@ -94,36 +94,51 @@ var amenityName = {
 
   var container = document.querySelector('.hotels-list');
   var activeFilter = 'filter-all';
-  var hotels = [];
+  var hotels = [];//не подходит - это изначальный список
+  var filteredHotels = [];//поэтому сохраним отфильтрованный список глобально
   var currentPage = 0;
   var PAGE_SIZE = 9;
 
-  var filters = document.querySelectorAll('.filter__item');
-  for (var i = 0; i < filters.length; i++) {
-      filters[i].onclick = function(evt) {
-         var clickedElementID = evt.target.id;
-         setActiveFilter(clickedElementID);
-      };
-  }
+  //чтобы добавить обработчики на клики, приходится пройтись по всем
+  // элементам и каждому из них добавить обработчик. Это трудоемкая
+  //операция. Можно ли сделать так, чтобы обавлялся только один
+  //обработчик сразу на все фильтры? Можно через делегирование.
+  //Делегирование - прием основанный на всплытии событий.
+  var filters = document.querySelector('.filter-hotels');
+  filters.addEventListener('click', function(evt){
+    var сlickedElement = evt.target;
+    if (сlickedElement.classList.contains('filter__item')) {
+      setActiveFilter(сlickedElement.id);
+    }
+  });
+
+
+  //старый обработчик
+  // for (var i = 0; i < filters.length; i++) {
+  //     filters[i].onclick = function(evt) {
+  //        var clickedElementID = evt.target.id;
+  //        setActiveFilter(clickedElementID);
+  //     };
+  // }
 
   var scrollTimeout;
 
   window.addEventListener('scroll', function(evt) {
       clearTimeout(scrollTimeout);
       scrollTimeout = setTimeout(function () {
-          console.log('scroll');
+          //console.log('scroll');
           //как определить, что скролл внизу страницы и пора показать
           //следующую порцию отелей?
           //Проверить - виден ли футер страницы.
           //как проверить виден ли футер страницы?
-          //1. определить положение футераотнос-но экрана(вьюпорта)
+          //1. определить положение футера относ-но экрана(вьюпорта)
           var footerCoordinates = document.querySelector('footer').getBoundingClientRect();
 
           //2. определить высоту экрана
           var viewportSize = window.innerHeight;
           //3. если смещение футера минус высота экрана меньше высоты футера,
           //    футер виден хотя бы частично
-          if (footerCoordinates.bottom - window.innerHeight <= footerCoordinates.height){
+          if (footerCoordinates.bottom - viewportSize <= footerCoordinates.height){
               if (currentPage < Math.ceil(filteredHotels.length / PAGE_SIZE)) {
                   renderHotels(filteredHotels, ++currentPage);
               }
@@ -172,7 +187,7 @@ function renderHotels(hotelsToRender, pageNumber, replace) {
     if (activeFilter === id && !force) {
         return;
     }
-
+    //Алгоритм
     //подсветка выбранного фильтра
     var selectedElement = document.querySelector('#' + activeFilter);
     if (selectedElement) {
@@ -183,7 +198,9 @@ function renderHotels(hotelsToRender, pageNumber, replace) {
     //document.querySelector('#' + id).classList.add('filter__item_selected');ToDo delete old
 
     filteredHotels = hotels.slice(0); //Копирование массива
-    //отсортировать  отфильтровать отели по выбранному параметру и вывест на страницу
+    //отсортировать,  отфильтровать отели по выбранному параметру и вывест на страницу
+
+
     switch (id){
 
         case 'filter-expensive':
