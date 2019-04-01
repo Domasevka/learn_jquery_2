@@ -198,7 +198,7 @@ function renderHotels(hotelsToRender, pageNumber, replace) {
     //document.querySelector('#' + id).classList.add('filter__item_selected');ToDo delete old
 
     filteredHotels = hotels.slice(0); //Копирование массива
-    //отсортировать,  отфильтровать отели по выбранному параметру и вывест на страницу
+    //отсортировать,  отфильтровать отели по выбранному параметру и вывестИ на страницу
 
 
     switch (id){

@@ -166,12 +166,19 @@ undefined + 1       //NaN
 null == "\n0\n"     //false
 +null == +"\n0\n"   //true*/
 
+
 /*for (var i = 2; i < 10; i++) {
 
     if (i % 2 == 0) {
         alert(i)
     };
 }*/
+/*for (var i = 10; i > 4; i--) {
+
+ if (i % 2 == 0) {
+ alert(i)
+ };
+ }*/
 
 /*for (var i = 0; i < 3; i++) {
     alert( "номер " + i + "!" );
@@ -190,13 +197,9 @@ while (i < 3) {
 
     var value = prompt("Введите число", '');
 
-    if (value > 100){
+    if (value > 100 || value == null){
         break
-    }else if (value == null) {
-        break
-    } else {
-        continue
-    };
+    }
 }
 
                                             ??*/
@@ -212,6 +215,13 @@ while (i < 3) {
  console.log(i);
 
  }*/
+
+
+/*for (var i = 5; i < 10; i++) {
+    for ( var j = 2 ; j < i; j++) {
+        console.log(i, j);
+    }
+}*/
 
 
 /*var browser = prompt("Введите arg?")
@@ -273,7 +283,6 @@ if (a == 2 || a == 3) {
     alert( '2,3' );
 }*/
 
-
 /*function showMovie(age) {
     if (!checkAge(age)) {
         return;
@@ -291,6 +300,86 @@ if (checkAge(age)) {
     alert( 'В доступе отказано' );
 }*/
 
+//ToDo function example start
+/*var test = function sayHi(name)  {
+ sayHi = "тест"; // попытка перезаписи
+ alert( sayHi ); // function... (перезапись не удалась)
+ };
+
+ test();
+ */
+
+/* function greet(who) {
+ console.log("Привет, " + who);
+ }
+ greet("Семён");
+ console.log("Покеда");*/
+
+/*
+ function sayHi() {   // (1)
+ alert( "Привет" );
+ }
+ sayHi();
+ var func = sayHi;    // (2)
+ func();*/
+//ToDo function example end
+
+
+/*var age = prompt('Сколько вам лет?');
+
+ var sayHi;
+
+ if (age >= 18) {
+ sayHi = function() {
+ alert( 'Прошу Вас!' );
+ }
+ } else {
+ sayHi = function() {
+ alert( 'До 18 нельзя' );
+ }
+ }
+ sayHi();*/
+
+/*function power(base, exponent) {
+    if (exponent == undefined) {
+        exponent = 2;
+    }
+    var result = 1;
+    for (var count = 0; count < exponent; count++)
+        result *= base;
+    return result;
+}
+
+console.log(power(4));
+console.log(power(4, 3));*/
+
+/*function wrapValue(n) {  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    var localVariable += n;
+    return function(n) {
+        localVariable +=n;
+        return localVariable;
+    };
+}
+
+var wrap1 = wrapValue(1);
+var wrap2 = wrapValue(2);
+console.log(wrap1(5));
+console.log(wrap1(6));
+// → 1
+console.log(wrap2());
+// → 2*/
+
+/*function multiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+var twice = multiplier(2);
+console.log(twice(5));
+// → 10*/
+
+//ToDo function example end
 
 /*var foo = 1;
 
@@ -345,32 +434,9 @@ console.log(test)*/
 
 //ToDo last task in functions
 
-/*
-function sayHi() {   // (1)
-    alert( "Привет" );
-}
-sayHi();
-var func = sayHi;    // (2)
-func();*/
 
 
-
-/*var age = prompt('Сколько вам лет?');
-
-var sayHi;
-
-if (age >= 18) {
-    sayHi = function() {
-        alert( 'Прошу Вас!' );
-    }
-} else {
-    sayHi = function() {
-        alert( 'До 18 нельзя' );
-    }
-}
-sayHi();*/
-
-
+//example
 /*function pow(x, n) {
     if (n != 1) { // пока n != 1, сводить вычисление pow(x,n) к pow(x,n-1)
         return x * pow(x, n - 1);
@@ -419,9 +485,10 @@ function sumTo(n) {
 
 alert( sumTo(100) );*/
 
+
 //examples
-/*
-var power = function(base, exponent) {
+
+/*var power = function(base, exponent) {
     var result = 1;
     for (var count = 0; count < exponent; count++)
         result *= base;
@@ -444,20 +511,188 @@ var f2 = function() {
 f2();
 console.log(x);*/
 
-/*var test = function sayHi(name)  {
-    sayHi = "тест"; // попытка перезаписи
-    alert( sayHi ); // function... (перезапись не удалась)
+//examples end
+
+
+
+//ToDo numbers
+
+/*var valueA = prompt("введите первое число", '10');
+var numberA = +valueA;
+var valueB = prompt("введите второе число", '-25');
+var numberB = +valueB;
+
+function sum() {
+    var c = numberB + numberA;
+    alert (c);
+}
+sum();*/
+
+
+//ToDo string
+
+/*ucFirst("вася") == "Вася";
+ucFirst("") == ""; // нет ошибок при пустой строке
+toUpperCase() и charAt().*/
+
+
+
+/*function ucFirst(str){
+
+
+    alert( str );
+    alert( "Интерфейс".toUpperCase() );
+}*/
+
+
+/*var str = 'вася';
+var first = str.charAt(0).toUpperCase();
+var second = str.substring(1);
+
+var newStr = first + second;
+
+console.log(first);
+console.log(second);
+console.log(newStr);*/
+
+/*function ucFirst(str) {
+
+    if (!str) return str;
+
+    return str[0].toUpperCase() + str.slice(1);
+}
+
+alert( ucFirst("") );*/
+
+//ToDo objects
+// Examples
+//     Создайте пустой объект user.
+//     Добавьте свойство name со значением Вася.
+//     Добавьте свойство surname со значением Петров.
+//     Поменяйте значение name на Сергей.
+//     Удалите свойство name из объекта.
+
+/*var user = {};
+
+user.name = 'Вася';
+user.surname = 'Петров';
+console.log(user.name)
+
+user.name = 'Сергей';
+console.log(user.name)
+
+delete user.name;
+
+console.log(user.name)*/
+
+//Example start
+/*var menu = {
+    width: 300,
+    height: 200,
+    title: "Menu"
 };
 
-test();
+for (var key in menu) {
+    // этот код будет вызван для каждого свойства объекта
+    // ..и выведет имя свойства и его значение
 
-function greet(who) {
-    console.log("Привет, " + who);
+    alert( "Ключ: " + key + " значение: " + menu[key]  );
+}*/
+
+
+/*var user = {
+    name: "Вася",
+    surname: "Петров"
+};
+user.age = 25;
+
+for (var prop in user) {
+    alert( prop ); // name, surname, age
+}*/
+//Example end
+
+
+//ToDo objects
+//_1_
+/*function isEmpty(obj) {
+    for (var item in schedule) {
+        alert( item );
+    }
+ }
+
+ var schedule = {};
+ alert( isEmpty(schedule) ); // true
+
+ schedule["8:30"] = "подъём";
+ alert( isEmpty(schedule) ); // false*/
+
+//_2_
+/*var salaries = {
+    "Вася": 100,
+    "Петя": 300,
+    "Даша": 250
+};
+var sum = 0;
+for (var name in salaries) {
+    sum += salaries[name];
 }
-greet("Семён");
-console.log("Покеда");*/
+alert(sum);*/
 
-var str = "stringify";
+//_3_
+/*var salaries = {
+    "Вася": 100,
+    "Петя": 300,
+    "Даша": 250
+};
 
-str = str.slice(2,4); // ring, со 2-й позиции 4 символа
-alert(str);
+var max = 0;
+var maxName = 0; //var maxName = '';
+for (var name in salaries) {
+    if (max < salaries[name]) {
+        max = salaries[name];
+        maxName = name;
+    }
+}
+
+alert( maxName || "нет" );*/
+
+/*function isEmpty(obj) {
+    for (var name in salaries) {
+        salaries[name] > salaries[name];
+    }
+}*/
+
+
+//Example start
+
+
+/*function calculate(){
+    var a = 3, b = 5;
+
+    function calculateInner(a){
+        var b = 7, c = 11;
+        a += b + c;
+        console.log('a =', a, '; b = ', b);
+    };
+    calculateInner(a);
+    console.log('a =', a, '; b = ', b);
+}
+calculate();*/
+
+/*var from = "Маша";
+
+function showMessage(from, text) {
+    from = '**' + from + '**'; // меняем локальную переменную from
+
+    console.log( from + ': ' + text );
+    return from;
+}
+
+showMessage(from, "Привет");
+console.log( from ); // старое значение from без изменений, в функции была изменена копия*/
+
+
+
+//Task _2_ end
+
+
