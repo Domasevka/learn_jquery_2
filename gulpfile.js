@@ -106,18 +106,18 @@ gulp.task('fontsSync', function () {
         .pipe(gulp.dest(outputDir + 'fonts/'));
 });
 
-/*gulp.task('bower', function() {
-    //return gulp.src(mainBowerFiles('**!/!*.js' ,{debugging:true}))
+/*
+gulp.task('js', function() {
     return gulp.src([
-        'bower_components/js-cookie/src/js.cookie.js'
-        //'bower_components/jquery-ui-slider/jquery-ui.js',
-        //'bower_components/twbs-pagination/jquery.twbsPagination.js',
-        //'bower_components/swiper/build/js/swiper.min.js'
+    nmDir + 'swiper/dist/js/swiper.min.js',
+    nmDir + 'jquery/dist/jquery.min.js',
+    srcDir + 'js/*.js'
     ])
-        .pipe(concat("vendor.js"))
-        .pipe(uglify()) // Сжимаем JS файл
-        .pipe(gulp.dest(outputDir + 'js/')); // Выгружаем в папку
-});*/
+    .pipe(plumber())
+    .pipe(concat("bundle.js"))
+    .pipe(uglify()) // Сжимаем JS файл
+    .pipe(gulp.dest(outputDir + 'js/')); // Выгружаем в папку
+ });*/
 
 gulp.task('svgSpriteBuild', function (){
     return gulp.src(srcDir + 'i/**/*.svg')
@@ -164,8 +164,8 @@ gulp.task('build', gulp.series(
 
 gulp.task('watch', function(){
     gulp.watch(srcDir + '**/*.pug', gulp.series('pug'));
-    gulp.watch(srcDir +'styles/**/*.scss', gulp.series('sass'));
-    gulp.watch(srcDir +'i/*.svg', gulp.series('svgSpriteBuild'));
+    gulp.watch(srcDir + 'styles/**/*.scss', gulp.series('sass'));
+    gulp.watch(srcDir + 'i/*.svg', gulp.series('svgSpriteBuild'));
     gulp.watch(srcDir + 'js/*.js', gulp.series('jsSync'));
     gulp.watch(srcDir + 'img/**/*', gulp.series('imageSync'));
     gulp.watch(srcDir + 'fonts/**/*', gulp.series('fontsSync'));
@@ -175,7 +175,8 @@ gulp.task('serve', function() {
     browserSync.init({
         server: {
             baseDir: 'build/',
-            index: "hotel-list.html"
+            index: "index.html"
+            //index: "hotel-list.html"
         }
     });
     browserSync.watch('build/**/*.*').on('change', browserSync.reload);
