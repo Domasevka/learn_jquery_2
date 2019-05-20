@@ -18,7 +18,7 @@
   color: #aaaaaa;
 }
 
-.button {
+.btn {
   @include font(14px);
 
   text-transform: uppercase;
@@ -70,7 +70,8 @@
   }
 
   &_sm {
-    padding: 13px 20px;
+    height: 4rem;
+    padding: 0 20px;
   }
 
   &_md {
@@ -94,52 +95,53 @@
 
 
 
-.button-group {
+.btn-group {
   display: flex;
 }
 
-.button-upload {
+.btn-upload {
   background-color: $gray--light;
   border-color: $gray--light;
   width: 240px;
 }
 
-.button-upload_active {
+.btn-upload_active {
   background-color: $color-primary;
   border-color: $color-primary;
 }
 
-.button_orange {
+.btn_orange {
   background-color: $color-warning;
 }
 
-.button_orange:hover, .button_orange:active {
+.btn_orange:hover, .button_orange:active {
   background-color: $color-warning-h;
 }
 
-.button-cancel {
+.btn-cancel {
+  width: 3rem;
   font-size: 12px;
   font-weight: 900;
   letter-spacing: 1.5px;
   text-align: center;
   color: $gray;
   border: none;
-  outline: none;
   background: transparent;
   transition: all .2s ease-in;
+  margin-left: auto;
 }
 
-.button-cancel:hover, .button-cancel:active, .button-cancel:focus {
+.btn-cancel:hover, .btn-cancel:active, .btn-cancel:focus {
   cursor: pointer;
   border: none;
   outline: none;
 }
 
-.button-cancel:hover {
+.btn-cancel:hover {
   cursor: pointer;
   color: #999999;
 }
 
-.button-cancel:active {
+.btn-cancel:active {
   color: #808080;
 }

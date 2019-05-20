@@ -536,10 +536,7 @@ ucFirst("") == ""; // нет ошибок при пустой строке
 toUpperCase() и charAt().*/
 
 
-
 /*function ucFirst(str){
-
-
     alert( str );
     alert( "Интерфейс".toUpperCase() );
 }*/
@@ -548,7 +545,6 @@ toUpperCase() и charAt().*/
 /*var str = 'вася';
 var first = str.charAt(0).toUpperCase();
 var second = str.substring(1);
-
 var newStr = first + second;
 
 console.log(first);

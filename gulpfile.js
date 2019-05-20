@@ -175,7 +175,8 @@ gulp.task('serve', function() {
     browserSync.init({
         server: {
             baseDir: 'build/',
-            index: "index.html"
+            //index: "index.html"
+            index: "todo-list-class.html"
             //index: "hotel-list.html"
         }
     });
