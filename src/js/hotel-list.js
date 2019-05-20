@@ -112,15 +112,7 @@ var amenityName = {
     }
   });
 
-
-  //старый обработчик
-  // for (var i = 0; i < filters.length; i++) {
-  //     filters[i].onclick = function(evt) {
-  //        var clickedElementID = evt.target.id;
-  //        setActiveFilter(clickedElementID);
-  //     };
-  // }
-
+    });
   var scrollTimeout;
 
   window.addEventListener('scroll', function(evt) {
