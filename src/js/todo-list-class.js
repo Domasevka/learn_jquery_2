@@ -53,11 +53,14 @@ class TodoList {
 
   createNewTask(value) {
     let taskText = document.createTextNode(value);
+    let itemTextInner = document.createElement("span");
+    itemTextInner.className = "list__text";
+    itemTextInner.appendChild(taskText);
 
     let listRowItem = document.createElement("li");
     listRowItem.className = "list__item";
 
-    listRowItem.appendChild(taskText);
+    listRowItem.appendChild(itemTextInner);
 
     let addBtn = document.createElement("span");
     addBtn.className = "btn-cancel";
@@ -80,12 +83,13 @@ class TodoList {
   addRemoveListener() {
     this.taskList.addEventListener('click', evt => {
       let clickedRow = evt.target;
-      if (clickedRow.classList.contains('btn-cancel')){
+      if (clickedRow.matches('.btn-cancel')){
+        const itemText = clickedRow.parentNode.firstElementChild.textContent;
+        const foundIndex = this.list.indexOf(itemText);
+        this.list.splice(foundIndex, 1);
         clickedRow.parentNode.remove();
+        this.uploadTasks();
       }
-
-      this.list.splice(clickedRow, 1);
-      this.uploadTasks();
     });
   }
 
@@ -99,7 +103,7 @@ class TodoList {
 }
 
 const firstTodolist = new TodoList('.first-wrapper', ['one','two']);
-const secondTodolist = new TodoList('.second-wrapper', ['one','two', 'four']);
+// const secondTodolist = new TodoList('.second-wrapper', ['one','two', 'four']);
 
 
 
