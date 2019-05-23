@@ -15,12 +15,17 @@ class TodoList {
     this.addRemoveListener();
 
     this.lsData = JSON.parse(localStorage.getItem('todoList'));
-    const tmpData = this.lsData && this.lsData[this.id] && this.lsData[this.id].length ?
+
+    const tmpData = this.hasTasks() ?
       this.lsData[this.id]
       : data;
 
     this.createTasks(tmpData);
   };
+
+  hasTasks() {
+    return this.lsData && this.lsData[this.id] && this.lsData[this.id].length;
+  }
 
   createInput = () => {
     const listInput = document.createElement('input');
@@ -106,13 +111,16 @@ const getPeople = (url) => {
   fetch(url)
     .then(response => response.json())
     .then(rawData => {
-      console.log(rawData);
       const newUsers = rawData.map(user => user['name']);
-      const firstTodolist = new TodoList('.first-wrapper', newUsers);
+      firstTodolist.createNewTask(user['name']);
     });
 };
 
-getPeople('https://jsonplaceholder.typicode.com/users/');
+const firstTodolist = new TodoList('.first-wrapper');
+
+if (!firstTodolist.hasTasks()) {
+  getPeople('https://jsonplaceholder.typicode.com/users/');
+}
 // const secondTodolist = new TodoList('.second-wrapper', ['one','two', 'four']);
 
 
