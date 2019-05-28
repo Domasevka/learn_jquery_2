@@ -112,7 +112,7 @@ var amenityName = {
     }
   });
 
-    });
+
   var scrollTimeout;
 
   window.addEventListener('scroll', function(evt) {
@@ -150,7 +150,6 @@ function renderHotels(hotelsToRender, pageNumber, replace) {
     }
 
      var fragment = document.createDocumentFragment();
-
      var from = pageNumber * PAGE_SIZE;
      var to = from + PAGE_SIZE;
      var pageHotels = hotelsToRender.slice(from, to);

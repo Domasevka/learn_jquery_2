@@ -111,8 +111,12 @@ const getPeople = (url) => {
   fetch(url)
     .then(response => response.json())
     .then(rawData => {
+
+      console.log(rawData);
+
       const newUsers = rawData.map(user => user['name']);
-      firstTodolist.createNewTask(user['name']);
+      firstTodolist.createTasks(newUsers);
+      //rawData.map(user => firstTodolist.createTasks(user['name']));
     });
 };
 
