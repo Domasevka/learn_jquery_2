@@ -9,6 +9,8 @@
   margin-bottom: 1em;
 
   &__input {
+    display: inline-block;
+    width: calc(100% - 8.7rem);
     height: 4rem;
     border: 2px solid #e0e0e0;
     border-radius: 4px;
@@ -30,24 +32,26 @@
   }
 
   &__group {
-    width: 45rem;
+    //width: 50rem;
   }
 
   &__text {
     margin-right: auto;
+    min-width: 17rem;
   }
 
   &__time {
-    background-color: $color-info;
+    background-color: $color-secondary;
     color: white;
     min-width: 100px;
+    max-width: 25rem;
     padding: 0 0.5rem;
   }
 
   &__count {
     background-color: $color-success;
     color: white;
-    max-width: 100px;
+    min-width: 12rem;
     padding: 0 0.5rem;
   }
 }
