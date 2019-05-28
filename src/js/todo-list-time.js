@@ -4,11 +4,10 @@ class TodoList {
     this.wrapper = document.querySelector(this.id);
 
     this.list = [];
-    //let newTask = {};
+
     console.log(this.list);
     this.input = this.createInput();
-    //this.date = this.createDate('jan,16,2013,00:00:00');
-    //this.timeout = setInterval(this.date, 1000);
+
     this.wrapper.appendChild(this.input);
 
     const button = this.createButton();
@@ -25,9 +24,6 @@ class TodoList {
       : data;
 
     this.createTasks(tmpData);
-    this.taskDate = this.createDate();
-
-    this.getDate();
   };
 
   hasTasks() {
@@ -51,9 +47,7 @@ class TodoList {
       if(inputValue === ''){
         alert("Add your note");
       } else {
-        //this.createNewTask({value: inputValue, date: new Date()});
-        this.createNewTask({value: inputValue, date: this.taskDate});
-
+        this.createNewTask({value: inputValue, date: new Date()});
         this.input.value = "";
       }
     };
@@ -80,6 +74,7 @@ class TodoList {
 
     let listRowItem = document.createElement("li");
     listRowItem.setAttribute("id", "list__item");
+    listRowItem.setAttribute('mr-data', JSON.stringify(data));
     listRowItem.className = "list__item";
 
     listRowItem.appendChild(itemTextInner);
@@ -91,10 +86,8 @@ class TodoList {
 
     listRowItem.appendChild(addTime);
 
-    //let countText = document.createTextNode();
     let addCount = document.createElement("span");
     addCount.className = "list__count";
-    //addCount.appendChild(countText);
 
     listRowItem.appendChild(addCount);
 
@@ -138,26 +131,69 @@ class TodoList {
     localStorage.setItem('todoList', JSON.stringify(this.lsData));
   }
 
-  createDate() {
+  createCounter(countTo) {
     let nowDate = new Date(),
-        //years  = nowDate.getFullYear(),
-        //months = nowDate.getMonth(),
-        //days   = nowDate.getDate(),
-        hours = nowDate.getHours(),
-        mins = nowDate.getMinutes(),
-        secs = nowDate.getSeconds();
-    //let dateRow = years + ' ' + ',' + ' ' + months + ' ' + ',' + ' ' + days + ' ' + ',' + ' ' + hours + ' ' + ':' + ' ' + mins + ' ' + ':' + ' ' + secs;
-    let dateRow = hours + ' ' + ':' + ' ' + mins + ' ' + ':' + ' ' + secs;
+      countDate = new Date(countTo),
+      years  = nowDate.getFullYear() - countDate.getFullYear(),
+      months = nowDate.getMonth() - countDate.getMonth(),
+      days   = nowDate.getDate() - countDate.getDate(),
+      hours = nowDate.getHours() - countDate.getHours(),
+      mins = nowDate.getMinutes() - countDate.getMinutes(),
+      secs = nowDate.getSeconds() - countDate.getSeconds();
+    if (months<0) {
+      years--;
+      months += 12;
+    }
+    if (days<0) {
+      months--;
+      var daysOfMonth = new Date(now.getTime());
+      daysOfMonth.setMonth(now.getMonth()+1);
+      daysOfMonth.setDate(0);
+      days+=daysOfMonth.getDate();
+    }
+    if (hours<0) {
+      days--;
+      hours+=24;
+    }
+
+    if (mins<0) {
+      hours--;
+      mins+=60;
+    }
+    if (secs<0) {
+      mins--;
+      secs+=60;
+    }
+
+    let dateRow = /*years + ' ' + ',' + ' ' + months + ' ' + ',' + ' ' + days + ' ' + ',' + ' ' + */hours + ' ' + ':' + ' ' + mins + ' ' + ':' + ' ' + secs;
     return dateRow;
   };
 
-  getDate() {
-    for (let i = 0; i < this.list.length; i++) {
+  createNewDateFormat(newStr){
+    let countDate = new Date(newStr);
 
-      console.log(this.list[i].date)
-    }
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-  };
+    let newDateFormat = new Date();
+
+    let dateStr = "Start is: " + days[countDate.getDay()] + ", " + countDate.getDate() + " " + months[countDate.getMonth()] + " " + countDate.getFullYear() + " " + countDate.getHours() +":" + countDate.getMinutes() + ":" + countDate.getSeconds();
+    return dateStr;
+  }
+
+  updateTime(){
+    document.querySelectorAll('.list__group li').forEach(it => {
+
+      const data = JSON.parse(it.getAttribute('mr-data'));
+      let counterFormat = data.date;
+      this.createCounter(counterFormat);
+      this.createNewDateFormat(counterFormat);
+
+      it.querySelector('.list__time').innerHTML = this.createNewDateFormat(counterFormat);
+      it.querySelector('.list__count').innerHTML = this.createCounter(counterFormat);
+    })
+
+  }
 }
 
 const getPeople = (url) => {
@@ -167,7 +203,6 @@ const getPeople = (url) => {
       //first example to create new object
       const newUsers = rawData.map(user => {
             return { id: user.id, name: user.name, date: new Date()}
-            //return { id: user.id, name: user.name, date: firstTodolist.createDate()}
 
       });
       //second example
@@ -194,47 +229,22 @@ if (!firstTodolist.hasTasks()) {
 
 
 
-const updateTime = (countTo) => {
-  let nowDate = new Date(),
-    countDate = new Date(countTo),
-    years  = nowDate.getFullYear() - countDate.getFullYear(),
-    months = nowDate.getMonth() - countDate.getMonth(),
-    days   = nowDate.getDate() - countDate.getDate(),
-    hours = nowDate.getHours() - countDate.getHours(),
-    mins = nowDate.getMinutes() - countDate.getMinutes(),
-    secs = nowDate.getSeconds() - countDate.getSeconds();
-  if (months<0) {
-    years--;
-    months += 12;
-  }
-  if (days<0) {
-    months--;
-    var daysOfMonth = new Date(now.getTime());
-    daysOfMonth.setMonth(now.getMonth()+1);
-    daysOfMonth.setDate(0);
-    days+=daysOfMonth.getDate();
-  }
-  if (hours<0) {
-    days--;
-    hours+=24;
-  }
+const newTime = (countTo) => {
 
-  if (mins<0) {
-    hours--;
-    mins+=60;
-  }
-  if (secs<0) {
-    mins--;
-    secs+=60;
-  }
-
-  let dateRow = years + ' ' + ',' + ' ' + months + ' ' + ',' + ' ' + days + ' ' + ',' + ' ' + hours + ' ' + ':' + ' ' + mins + ' ' + ':' + ' ' + secs;
-  //document.getElementsByClassName('list__time').innerHTML = dateRow;
-  return dateRow;
 };
-setInterval(() => {updateTime('jan,16,2013,00:00:00')}, 1000);
+setInterval(() => {
 
+  firstTodolist.updateTime()
 
+  }, 1000);
+
+/*document.querySelectorAll('.list__group li').forEach(function (it) {
+
+  const data = JSON.parse(it.getAttribute('mr-data'));
+
+  console.log(data);
+  it.querySelector('.list__time').innerHTML = "3434";
+})*/
 
 // const secondTodolist = new TodoList('.second-wrapper', ['one','two', 'four']);
 

@@ -30,7 +30,7 @@
   }
 
   &__group {
-    width: 45rem;
+    width: 100%;
   }
 
   &__text {
@@ -47,7 +47,8 @@
   &__count {
     background-color: $color-success;
     color: white;
-    max-width: 100px;
+    max-width: 13rem;
+    min-width: 12rem;
     padding: 0 0.5rem;
   }
 }
