@@ -176,7 +176,7 @@ gulp.task('serve', function() {
         server: {
             baseDir: 'build/',
             //index: "index.html"
-            index: "todo-list-time.html"
+            index: "calculator.html"
             //index: "hotel-list.html"
         }
     });

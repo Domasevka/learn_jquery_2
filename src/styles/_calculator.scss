@@ -1,0 +1,32 @@
+.calculator {
+  width: 40rem;
+
+  &__display {
+    background-color:  $gray--light;
+    line-height: 2.6rem;
+    height: 3rem;
+    text-align: right;
+    padding: 0 0.5rem;
+  }
+  &__keys {
+    text-align: right;
+  }
+}
+
+.keys {
+  &__operator {
+    width: calc((100% / 4) - 0.4rem);
+    //width: 9.6rem;
+  }
+  &__btn {
+    width: calc((100% / 4) - 0.4rem);
+  }
+  &__equal {
+    width: calc((100% / 4) - 0.4rem);
+  }
+}
+
+.is-depressed {
+  background-color: $gray--darken;
+  color: white;
+}

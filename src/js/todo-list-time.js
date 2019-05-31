@@ -131,7 +131,7 @@ class TodoList {
     localStorage.setItem('todoList', JSON.stringify(this.lsData));
   }
 
-  createCounter(countTo) {
+  /*createCounter(countTo) {
     let nowDate = new Date(),
       countDate = new Date(countTo),
       years  = nowDate.getFullYear() - countDate.getFullYear(),
@@ -165,11 +165,29 @@ class TodoList {
       secs+=60;
     }
 
-    let dateRow = /*years + ' ' + ',' + ' ' + months + ' ' + ',' + ' ' + days + ' ' + ',' + ' ' + */hours + ' ' + ':' + ' ' + mins + ' ' + ':' + ' ' + secs;
+    let dateRow = /!*years + ' ' + ',' + ' ' + months + ' ' + ',' + ' ' + days + ' ' + ',' + ' ' + *!/hours + ' ' + ':' + ' ' + mins + ' ' + ':' + ' ' + secs;
     return dateRow;
+  };*/
+
+  createCounter(countTo) {
+
+    let result = dateFns.distanceInWordsToNow(
+      new Date(countTo)
+    )
+    /*let nowDate = (
+      new Date(),
+      new Date(countTo)
+    )*/
+    //let nowDate = moment(countTo).startOf('seconds').fromNow();
+
+    //console.log(nowDate);
+
+    return result;
   };
 
-  createNewDateFormat(newStr){
+
+
+  /*createNewDateFormat(newStr){
     let countDate = new Date(newStr);
 
     let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -178,6 +196,15 @@ class TodoList {
     let newDateFormat = new Date();
 
     let dateStr = "Start is: " + days[countDate.getDay()] + ", " + countDate.getDate() + " " + months[countDate.getMonth()] + " " + countDate.getFullYear() + " " + countDate.getHours() +":" + countDate.getMinutes() + ":" + countDate.getSeconds();
+    return dateStr;
+  }*/
+
+  createNewDateFormat(newStr){
+
+    let countDate = dateFns.format(new Date(newStr), 'MM:DD:YYYY');
+    console.log(countDate);
+
+    let dateStr = "Start is: " + countDate;
     return dateStr;
   }
 
